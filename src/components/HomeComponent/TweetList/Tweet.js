@@ -1,6 +1,12 @@
+import { useState } from "react";
 import { COMMENTS, KZ_IMG_PATH, LIKES, RETWEETS, SHARE } from "../images";
 
 export default function Tweet(tweet){
+
+    const [title, setTitle] = useState(tweet.content);
+ 
+
+    console.log(tweet.content.lenght)
     return(
        <div className="mt-3 px-3" style={{borderBottom: '2px solid whitesmoke'}}>
             <p className="mx-5" style={{fontSize:13, fontWeight:'600'}}>You might like! <span style={{color:'blue'}}>See more</span></p>
@@ -8,7 +14,7 @@ export default function Tweet(tweet){
                 <img src={tweet.img} style={{width:50, height:50, borderRadius:50}}/> 
                 <div className="mx-3">
                     <p style={{fontWeight: 600}}>{tweet.authorName} <span style={{color: 'grey'}}>{tweet.authorUserName}</span></p>
-                    <p>{tweet.content}</p>
+                    <p>{title.length>200 ? title.slice(0, 200) + '...' : title}</p>
                 </div>
             </div>
 
